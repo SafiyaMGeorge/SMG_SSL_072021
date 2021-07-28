@@ -1,0 +1,79 @@
+
+        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+            <div class="form-floating mb-3">
+                <input class="form-control" id="firstName" type="text" placeholder="First Name" data-sb-validations="" />
+                <label for="firstName">First Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="lastName" type="text" placeholder="Last Name" data-sb-validations="" />
+                <label for="lastName">Last Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="address" type="text" placeholder="Address" data-sb-validations="" />
+                <label for="address">Address</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="city" type="text" placeholder="City" data-sb-validations="" />
+                <label for="city">City</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="state" type="text" placeholder="State" data-sb-validations="" />
+                <label for="state">State</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="zip" type="text" placeholder="Zip" data-sb-validations="" />
+                <label for="zip">Zip</label>
+            </div>
+            <div class="form-floating mb-3">
+                <select class="form-select" id="age" aria-label="Age">
+                    <option value="under 21">under 21</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="30+">30+</option>
+                </select>
+                <label for="age">Age</label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label d-block">Gender</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="female" type="radio" name="gender" />
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="male" type="radio" name="gender" />
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="preferNotToDisclose" type="radio" name="gender" />
+                    <label class="form-check-label" for="preferNotToDisclose">prefer not to disclose</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label d-block">Consent</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="iAgree" type="checkbox" name="consent" />
+                    <label class="form-check-label" for="iAgree">I agree</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="iDoNotAgree" type="checkbox" name="consent" />
+                    <label class="form-check-label" for="iDoNotAgree">I do not agree</label>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="bio" type="text" placeholder="Bio" style="height: 10rem;"></textarea>
+                <label for="bio">Bio</label>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+      
