@@ -12,18 +12,52 @@
                         <%}%>
                 </li>
                 <li class="nav-item">
-                    <% if (pagename =="Home")%>
-                        <a class="nav-link" style="color:thistle" href="/a">Home</a>
+                    <% if (pagename =="About")%>
+                        <a class="nav-link" style="color:thistle" href="/a">About</a>
                     <%esle{%>
                         <a class="nav-link" href="/about">About</a>
                         <%}%>
                 </li>
+                <li class="nav-item">
+                    <% if (pagename =="Contact")%>
+                        <a class="nav-link" style="color:thistle" href="/c">Contact</a>
+                    <%esle{%>
+                        <a class="nav-link" href="/contact">Contact</a>
+                        <%}%>
+                        <%if(typeof(sess)!="undefined"&&sess.logged==true){
+                            <a class="nav-link" style="color:thistle" href="/profile">Profile</a>
+                            <a class="nav-link" style="color:thistle" href="/logout">Logout</a>
+                            %>}%>
+                </li>
+                
             </ul>
         </div>
     </div>
 </nav>
 
-
-
+<div style="z-index: 999; 
+display: block; 
+text-align: right; 
+margin-right: 0px; 
+padding-right: 20px; 
+position: absolute; 
+width: 155px; 
+margin-top: 4px; 
+padding-top: 5px;
+right: 0;
+border-radius: 10px;
+padding: 11px;
+font-size: 12px;">
+    <form action="/login" method="POST">
+        <input type="text" name="email" placeholder="Email"/>
+        <input type="password" name="password" placeholder="password"/>
+        <input type="submit"/>
+    </form>
+</div>
+<%if(typeof(error) !="undefined"){%>
+    <%for(x in errors){%>
+        <br><span><%errors[x]%></span>
+    <%}%>
+<%}%>
 
  

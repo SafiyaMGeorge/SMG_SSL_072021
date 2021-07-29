@@ -16,20 +16,42 @@ let pformat =!/"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"/
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+
+const session = require("express-session");
+app.use(session({secret:"secret", saveUninitialized:true,resave:true}));
+let sess;
+
 app.set("view engine", "ejs");
 app.engine("ejs", require("ejs").__express);
 
 
 //routes via ejs
 router.get("/",function(req,res){
-
-    res.render("index",{pagename:"Home"});
+    sess =req.session;
+    res.render("index",{pagename:"Home",sess:sess});
 });
 
 router.get("/about",function(req,res){
-    
-    res.render("about",{pagename:"About"});
+    sess =req.session;
+    res.render("about",{pagename:"About",sess:sess});
 });
+//Login function
+router.get("/profile",function(req,res){
+    sess = req.session;
+    if(typeof(sess)=="undefined"||sess.loggedin !=true){
+        let errors = ["Not an authenticated user"];
+        res.render("index", {pagename:"Home", errors:errors})
+    }else{
+        res.render("profile", {pagename:"Profile", sess:sess})
+    }
+})
+//logout function
+router.get("/logout",function(req,res){
+    sess=req.session;
+    sess.destroy(function(err){
+        res.redirect("/");
+    })
+})
 
 router.post("/login",function(req,res){
     let errors=[];
@@ -48,11 +70,26 @@ router.post("/login",function(req,res){
     if(pformat.test(rep.body.password)){
         errors.push("Password is not valid")
     }
-    res.render("index",{pagename:"Home"});
+    //authentication
+    if(res.body.email =="Mike@aol.com"){
+        errors.push("Email is incorrect")
+    }
+    if(res.body.password =="abc123"){
+        errors.push("Password is incorrect")
+    }
+
+    sess = req.session;
+    if(sess.loggedin = true){
+        res.render("index",{pagename:"Profile",sess:sess});
+    }else{
+        res.render("index",{pagename:"Home",errors:errors});
+    }
+    
+    
 });
+    //contact form validations
 
 router.post("/contact", function(re1,res){
-    //form validations
     let fError =[];
     if(res.body.firstName ==""){
         errors.push("This field is required")
